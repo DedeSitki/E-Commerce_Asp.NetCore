@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Kategoriler";
+}
+
+@await Html.PartialAsync("_navbar")
+
+<!-- Bootstrap Kategori Bölümü -->
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="row justify-content-center w-100">
+        <div class="col-md-5">
+            <div class="card text-center plastik">
+                <div class="card-body">
+                    <h2 class="card-title">Plastik</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="card text-center aluminyum">
+                <div class="card-body">
+                    <h2 class="card-title">Alüminyum</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Stil Ayarları -->
+<style>
+    .plastik {
+        background-color: #d1e7fd;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .aluminyum {
+        background-color: #f1f1f1;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-title {
+        font-size: 24px;
+        color: #333;
+    }
+</style>

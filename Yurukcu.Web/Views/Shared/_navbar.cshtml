@@ -1,0 +1,52 @@
+﻿<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand me-auto" href="/">
+            <img src="~/logos/yurukcu-logo-default.png" alt="E-Ticaret" width="120">
+        </a>
+
+        <!-- Mobil Menü Butonu -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Menüyü Aç">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menü İçeriği -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Ana Sayfa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/Products">Ürünler</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Categories" asp-action="Index">Kategoriler</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Home" asp-action="AboutUs">Hakkımızda</a>
+                </li>
+            </ul>
+
+            @* <!-- Arama Çubuğu --> *@
+            @* <form class="d-flex" asp-action="Search" asp-controller="Home"> *@
+            @*     <input class="form-control me-2" type="search" name="query" placeholder="Ürün Ara..." aria-label="Ara"> *@
+            @*     <button class="btn btn-outline-success" type="submit">Ara</button> *@
+            @* </form> *@
+
+            <!-- Kullanıcı & Sepet -->
+            <ul class="navbar-nav ms-3">
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="User" asp-action="UserLogIn">
+                        <i class="bi bi-person"></i> Giriş Yap
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Cart">
+                        <i class="bi bi-cart"></i> Sepetim (0)
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

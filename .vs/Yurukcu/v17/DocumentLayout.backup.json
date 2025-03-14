@@ -1,0 +1,113 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|c:\\users\\sitki\\source\\repos\\yurukcu\\yurukcu.web\\views\\user\\usersignup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|solutionrelative:yurukcu.web\\views\\user\\usersignup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|c:\\users\\sitki\\source\\repos\\yurukcu\\yurukcu.web\\data\\dataseeding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|solutionrelative:yurukcu.web\\data\\dataseeding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|c:\\users\\sitki\\source\\repos\\yurukcu\\yurukcu.web\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|solutionrelative:yurukcu.web\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|c:\\users\\sitki\\source\\repos\\yurukcu\\yurukcu.web\\views\\user\\userlogin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|solutionrelative:yurukcu.web\\views\\user\\userlogin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|c:\\users\\sitki\\source\\repos\\yurukcu\\yurukcu.web\\models\\usercreateviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|solutionrelative:yurukcu.web\\models\\usercreateviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserCreateViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Models\\UserCreateViewModel.cs",
+              "RelativeDocumentMoniker": "Yurukcu.Web\\Models\\UserCreateViewModel.cs",
+              "ToolTip": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Models\\UserCreateViewModel.cs",
+              "RelativeToolTip": "Yurukcu.Web\\Models\\UserCreateViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-12T20:26:26.035Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserLogIn.cshtml",
+              "DocumentMoniker": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Views\\User\\UserLogIn.cshtml",
+              "RelativeDocumentMoniker": "Yurukcu.Web\\Views\\User\\UserLogIn.cshtml",
+              "ToolTip": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Views\\User\\UserLogIn.cshtml",
+              "RelativeToolTip": "Yurukcu.Web\\Views\\User\\UserLogIn.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-12T20:22:43.133Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserSignUp.cshtml",
+              "DocumentMoniker": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Views\\User\\UserSignUp.cshtml",
+              "RelativeDocumentMoniker": "Yurukcu.Web\\Views\\User\\UserSignUp.cshtml",
+              "ToolTip": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Views\\User\\UserSignUp.cshtml",
+              "RelativeToolTip": "Yurukcu.Web\\Views\\User\\UserSignUp.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-12T20:19:24.558Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DataSeeding.cs",
+              "DocumentMoniker": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Data\\DataSeeding.cs",
+              "RelativeDocumentMoniker": "Yurukcu.Web\\Data\\DataSeeding.cs",
+              "ToolTip": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Data\\DataSeeding.cs",
+              "RelativeToolTip": "Yurukcu.Web\\Data\\DataSeeding.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAMYAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-12T19:59:33.988Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Yurukcu.Web\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Yurukcu.Web\\Controllers\\UserController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAAAC4AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-12T19:39:29.544Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
