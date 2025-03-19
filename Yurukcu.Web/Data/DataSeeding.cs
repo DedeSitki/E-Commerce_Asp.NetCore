@@ -97,6 +97,7 @@ namespace Yurukcu.Web.Data
             ImageUrl="products/product3.jpg"
         },
     };
+
             var discountProduct = new List<DiscountProduct>()
     {
         new DiscountProduct
@@ -196,6 +197,7 @@ namespace Yurukcu.Web.Data
             ImageUrl="products/product1.jpg"
         },
     };
+
             var users = new List<User>()
             {
                 new User{
@@ -210,6 +212,50 @@ namespace Yurukcu.Web.Data
                 }
             };
 
+            var orderDetails = new List<OrderDetail>()
+            {
+                new OrderDetail
+                {
+                    UserId = 2,
+                    OrderDate = DateTime.Now,
+                    OrderAddress = "Kartal",
+                    OrderBillingAddress = "Soğanlık",
+                    Orders = ["Ürün 1", "Ürün 2"],
+                    TotalPrice = 1050,
+                    OrderStatus ="Ödendi",
+                    PaymentMethod="Kredi Kartı",
+                    OrderTrackingCode = "123A456BC"
+                }
+            };
+
+            var addresses = new Address
+            {
+                AddressTitle = "Adres başlığı Billing false",
+                IsBillingAddress = false,
+                City = "Kartal",
+                DeliveryAddress = "Teslimat adresi",
+                ZipCode = "34",
+                UserId = 2
+            };
+
+            var supportRequest = new SupportRequest
+            {
+                Name = "Sıtkı Dede",
+                EMail = "sitkidede60@gmaiil.com",
+                Message = "Mesajım",
+                SubmittedDate = DateTime.Now
+            };
+
+            var shoppingBag = new ShoppingBag
+            {
+                Price = 15,           // Fiyat
+                ProductId = 1,        // Ürün ID'si
+                Quantity = 15,        // Adet
+                UserId = 2,         // Kullanıcı ID'si
+            };
+
+
+
             if (!context.DiscountProducts.Any())
             {
                 context.DiscountProducts.AddRange(discountProduct);
@@ -223,6 +269,26 @@ namespace Yurukcu.Web.Data
             if (!context.Users.Any())
             {
                 context.Users.AddRange(users);
+                context.SaveChanges();
+            }
+            if (!context.OrderDetails.Any())
+            {
+                context.OrderDetails.AddRange(orderDetails);
+                context.SaveChanges();
+            }
+            if (!context.Addresses.Any())
+            {
+                context.Addresses.AddRange(addresses);
+                context.SaveChanges();
+            }
+            if (!context.SupportRequests.Any())
+            {
+                context.SupportRequests.AddRange(supportRequest);
+                context.SaveChanges();
+            }
+            if (!context.ShoppingBags.Any())
+            {
+                context.ShoppingBags.AddRange(shoppingBag);
                 context.SaveChanges();
             }
         }

@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Bilgilerim";
+}
+
+@await Html.PartialAsync("_navbar")
+
+<!-- İçerik -->
+<div class="container py-5">
+    <h2 class="mb-5 ">Hesabım</h2>
+
+    <!-- Profilim -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Profilim</h5>
+            <p class="card-text">Kişisel bilgilerinizi görüntüleyin, düzenleyin ve şifre değişikliği yapın.</p>
+            <a class="btn btn-primary btn-md w-20" asp-controller="User" asp-action="UserMyProfile">Profili Düzenle</a>
+        </div>
+    </div>
+
+    <!-- Siparişlerim -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Siparişlerim</h5>
+            <p class="card-text">Geçmiş siparişlerinizi görüntüleyin ve takibini yapın.</p>
+            <a class="btn btn-primary btn-md w-20" asp-controller="User" asp-action="UserMyOrders">Siparişleri Görüntüle</a>
+        </div>
+    </div>
+
+    <!-- Adres Defteri -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Adres Defteri</h5>
+            <p class="card-text">Adreslerinizi ekleyin, düzenleyin veya silin.</p>
+            <a class="btn btn-primary btn-md w-20" asp-controller="User" asp-action="UserAddress">Adresleri Yönet</a>
+        </div>
+    </div>
+
+    <!-- Destek -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <h5 class="card-title">İletişim ve Destek</h5>
+            <p class="card-text">Sıkça sorulan sorulara bakın veya bizimle iletişime geçin.</p>
+            <a class="btn btn-primary btn-md w-20" asp-controller="User" asp-action="UserContactAndSupport">Destek Al</a>
+        </div>
+    </div>
+
+    <!-- Çıkış Yap -->
+    <div class="card shadow-sm border-danger mb-4">
+        <div class="card-body">
+            <h5 class="card-title text-danger">Çıkış Yap</h5>
+            <p class="card-text">Hesabınızdan çıkış yaparak güvenliğinizi sağlayın.</p>
+            <a class="btn btn-outline-danger btn-md w-20" asp-controller="User" asp-action="Logout">Çıkış Yap</a>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+﻿@model OrderDetailViewModel
+
+@{
+    ViewData["Title"] = "Sipariş Detayı";
+}
+
+@await Html.PartialAsync("_navbar")
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Sipariş Detayı</h2>
+
+    <!-- Detaylar İçin Kart Yapısı -->
+    <div class="card">
+        <div class="card-header">
+            <h4>Sipariş ID: @Model.OrderId</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Sipariş Tarihi</dt>
+                <dd class="col-sm-9">@Model.OrderDate.ToString("dd/MM/yyyy")</dd>
+
+                <dt class="col-sm-3">Toplam Fiyat</dt>
+                <dd class="col-sm-9">@Model.TotalPrice.ToString("C")</dd>
+
+                <dt class="col-sm-3">Ödeme Yöntemi</dt>
+                <dd class="col-sm-9">@Model.PaymentMethod</dd>
+
+                <dt class="col-sm-3">Durum</dt>
+                <dd class="col-sm-9">@Model.OrderStatus</dd>
+
+                <dt class="col-sm-3">Takip Kodu</dt>
+                <dd class="col-sm-9">@Model.OrderTrackingCode</dd>
+
+                <dt class="col-sm-3">Adres</dt>
+                <dd class="col-sm-9">@Model.OrderAddress</dd>
+            </dl>
+        </div>
+        <div class="card-footer text-center">
+            <a asp-controller="User" asp-action="UserMyOrders" class="btn btn-secondary">Geri Dön</a>
+        </div>
+    </div>
+</div>
+

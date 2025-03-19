@@ -5,7 +5,7 @@ namespace Yurukcu.Web.Models
     public class UserLogInViewModel
     {
         [EmailAddress]
-        [Required(ErrorMessage = "Geçerli bir EMail giriniz")]
+        [Required(ErrorMessage = "Geçerli bir E-Posta adresi giriniz")]
         public string EMail { get; set; }
 
         [Required]

@@ -60,8 +60,36 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/sitki/source/repos/Yurukcu/Yurukcu.Web/Views/User/UserAccountInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyQWNjb3VudEluZm8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sitki/source/repos/Yurukcu/Yurukcu.Web/Views/User/UserAddress.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyQWRkcmVzcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sitki/source/repos/Yurukcu/Yurukcu.Web/Views/User/UserContactAndSupport.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyQ29udGFjdEFuZFN1cHBvcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/sitki/source/repos/Yurukcu/Yurukcu.Web/Views/User/UserLogIn.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyTG9nSW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sitki/source/repos/Yurukcu/Yurukcu.Web/Views/User/UserMyOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyTXlPcmRlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sitki/source/repos/Yurukcu/Yurukcu.Web/Views/User/UserMyOrdersDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyTXlPcmRlcnNEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sitki/source/repos/Yurukcu/Yurukcu.Web/Views/User/UserMyProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyTXlQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sitki/source/repos/Yurukcu/Yurukcu.Web/Views/User/UserShoppingBag.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyU2hvcHBpbmdCYWcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/sitki/source/repos/Yurukcu/Yurukcu.Web/Views/User/UserSignUp.cshtml]

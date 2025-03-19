@@ -12,18 +12,51 @@ using Yurukcu.Web.Data;
 namespace Yurukcu.Web.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20250312200350_2")]
-    partial class _2
+    [Migration("20250318065759_AddedAddress")]
+    partial class AddedAddress
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.2")
+                .HasAnnotation("ProductVersion", "9.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Yurukcu.Web.Entity.Address", b =>
+                {
+                    b.Property<int>("AddressId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AddressId"));
+
+                    b.Property<string>("AddressTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DeliveryAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsBillingAddress")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ZipCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AddressId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Addresses");
+                });
 
             modelBuilder.Entity("Yurukcu.Web.Entity.DiscountProduct", b =>
                 {
@@ -51,6 +84,48 @@ namespace Yurukcu.Web.Migrations
                     b.HasKey("DiscountProductId");
 
                     b.ToTable("DiscountProducts");
+                });
+
+            modelBuilder.Entity("Yurukcu.Web.Entity.OrderDetail", b =>
+                {
+                    b.Property<int>("OrderId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderId"));
+
+                    b.Property<string>("OrderAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OrderBillingAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("OrderStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OrderTrackingCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.PrimitiveCollection<string>("Orders")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PaymentMethod")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(10,2)");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("OrderId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("OrderDetails");
                 });
 
             modelBuilder.Entity("Yurukcu.Web.Entity.Product", b =>
@@ -113,6 +188,31 @@ namespace Yurukcu.Web.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Yurukcu.Web.Entity.Address", b =>
+                {
+                    b.HasOne("Yurukcu.Web.Entity.User", "User")
+                        .WithMany("Addresses")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Yurukcu.Web.Entity.OrderDetail", b =>
+                {
+                    b.HasOne("Yurukcu.Web.Entity.User", "User")
+                        .WithMany("Orders")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Yurukcu.Web.Entity.User", b =>
+                {
+                    b.Navigation("Addresses");
+
+                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

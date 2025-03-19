@@ -1,0 +1,69 @@
+﻿@{
+    ViewData["Title"] = "İletişim ve Destek";
+}
+
+@await Html.PartialAsync("_navbar")
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">İletişim ve Destek</h2>
+
+    <div class="row">
+        <!-- İletişim Formu -->
+        <div class="col-md-6">
+            <h4>Bizimle İletişime Geçin</h4>
+            <form asp-controller="User" asp-action="UserContactAndSupport" method="POST">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Adınız</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-Posta</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Mesajınız</label>
+                    <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary mb-3">Gönder</button>
+            </form>
+        </div>
+
+        <!-- Destek & İletişim Bilgileri -->
+        <div class="col-md-6">
+            <h4>Bize Ulaşın</h4>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <i class="fas fa-phone-alt"></i> <strong>Telefon:</strong> +90 212 123 45 67
+                </li>
+                <li class="list-group-item">
+                    <i class="fas fa-envelope"></i> <strong>E-Posta:</strong> destek@siteadi.com
+                </li>
+                <li class="list-group-item">
+                    <i class="fas fa-map-marker-alt"></i> <strong>Adres:</strong> İstanbul, Türkiye
+                </li>
+                <li class="list-group-item">
+                    <a href="https://wa.me/905551234567" class="btn btn-success mt-2">
+                        <i class="fab fa-whatsapp"></i> WhatsApp ile Destek
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+
+    <!-- Google Harita -->
+    <div class="mt-5">
+        <h4>Ofisimiz</h4>
+        <div class="ratio ratio-16x9">
+            <iframe src="https://maps.google.com/maps?q=İstanbul&t=&z=13&ie=UTF8&iwloc=&output=embed" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+

@@ -28,24 +28,24 @@
                 </li>
             </ul>
 
-            @* <!-- Arama Çubuğu --> *@
-            @* <form class="d-flex" asp-action="Search" asp-controller="Home"> *@
-            @*     <input class="form-control me-2" type="search" name="query" placeholder="Ürün Ara..." aria-label="Ara"> *@
-            @*     <button class="btn btn-outline-success" type="submit">Ara</button> *@
-            @* </form> *@
-
             <!-- Kullanıcı & Sepet -->
             <ul class="navbar-nav ms-3">
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="User" asp-action="UserLogIn">
-                        <i class="bi bi-person"></i> Giriş Yap
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Cart">
-                        <i class="bi bi-cart"></i> Sepetim (0)
-                    </a>
-                </li>
+                @if (Context.Session.GetString("UserEMail") != null)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="User" asp-action="UserAccountInfo">
+                            <i class="bi bi-person"></i>@Context.Session.GetString("UserEMail")
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="User" asp-action="UserLogIn">
+                            <i class="bi bi-person"></i> Giriş Yap
+                        </a>
+                    </li>
+                }
             </ul>
         </div>
     </div>

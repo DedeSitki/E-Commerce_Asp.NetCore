@@ -21,7 +21,6 @@ namespace Yurukcu.Web.Migrations
                     ProductDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LowPrice = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
                     HighPrice = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    DiscountAmount = table.Column<int>(type: "int", nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -64,6 +63,37 @@ namespace Yurukcu.Web.Migrations
                 {
                     table.PrimaryKey("PK_Users", x => x.UserId);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "OrderDetails",
+                columns: table => new
+                {
+                    OrderId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    OrderAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OrderBillingAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Orders = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TotalPrice = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
+                    PaymentMethod = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OrderStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OrderTrackingCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderDetails", x => x.OrderId);
+                    table.ForeignKey(
+                        name: "FK_OrderDetails_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId");
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderDetails_UserId",
+                table: "OrderDetails",
+                column: "UserId");
         }
 
         /// <inheritdoc />
@@ -71,6 +101,9 @@ namespace Yurukcu.Web.Migrations
         {
             migrationBuilder.DropTable(
                 name: "DiscountProducts");
+
+            migrationBuilder.DropTable(
+                name: "OrderDetails");
 
             migrationBuilder.DropTable(
                 name: "Products");

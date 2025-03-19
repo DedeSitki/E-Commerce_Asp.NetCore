@@ -5,89 +5,224 @@
 }
 
 @await Html.PartialAsync("_navbar")
-
 @await Html.PartialAsync("_searchbar")
+
+@{
+    var message = TempData["Message"];
+}
+
+@if (message != null)
+{
+    <div id="messageBox" class="alert alert-success alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3 shadow-lg" role="alert" style="z-index: 1050; max-width: 400px;">
+        <i class="bi bi-check-circle me-2"></i> @message
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <script>
+        setTimeout(function () {
+            var messageBox = document.getElementById("messageBox");
+            if (messageBox) {
+                var fadeEffect = setInterval(function () {
+                    if (!messageBox.style.opacity) {
+                        messageBox.style.opacity = 1;
+                    }
+                    if (messageBox.style.opacity > 0) {
+                        messageBox.style.opacity -= 0.1;
+                    } else {
+                        clearInterval(fadeEffect);
+                        messageBox.remove();
+                    }
+                }, 50);
+            }
+        }, 2000);
+    </script>
+}
 
 @if (Model != null && Model.Any())
 {
-    <div class="row g-4">
-        @foreach (var product in Model)
-        {
-            var discountRate = product.HighPrice > 0 ? (100 - (product.LowPrice * 100 / product.HighPrice)) : 0;
-            var discountRateInt = (int)discountRate;
-
-            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                <div class="card border-0 shadow-lg p-2 position-relative rounded-4 product-card">
-
-                    <!-- İndirim Etiketi (Eğer indirim varsa göster) -->
-                    @if (discountRate > 0)
-                    {
-                        <div class="position-absolute top-0 start-0 bg-danger text-white fw-bold px-3 py-1 rounded-bottom">
-                            %@(discountRateInt) İndirim
-                        </div>
-                    }
-
-                    <!-- Ürün Resmi -->
-                    <img src="@Url.Content(product.ImageUrl)" class="card-img-top rounded-3"
-                         style="width: 100%; height: 200px; object-fit: contain;">
-
-                    <div class="card-body text-center">
-                        <h6 class="text-uppercase text-muted mb-1">@product.ProductName</h6>
-                        <p class="fw-bold text-dark mb-2">
-                            @(product.ProductDescription.Length > 100
-                                ? product.ProductDescription.Substring(0, 100) + "..."
-                                : product.ProductDescription)
-                        </p>
-
-                        <!-- Fiyat Bilgisi -->
-                        <p class="mb-3">
-                            <!-- Eğer indirim varsa, highPrice üstü çizili gri renkte gösterilsin -->
-                            @if (product.HighPrice > product.LowPrice)
-                            {
-                                <span class="text-muted text-decoration-line-through me-2">@product.HighPrice TL</span>
-                            }
-                            <span class="text-danger fw-bold fs-4">@product.LowPrice TL</span>
-                        </p>
-
-                        <!-- Sepete Ekle Butonu -->
-                        <button type="button" class="btn btn-danger w-100 fw-bold py-2 rounded-3 shadow-sm add-to-cart-btn"
-                                onclick="addToCart('@product.ProductName', '@product.LowPrice', '@Url.Content(product.ImageUrl)')">
-                            Sepete Ekle
-                            <i class="bi bi-cart-plus ms-1"></i>
-                        </button>
-                    </div>
+    <div class="container mb-4 ">
+        <div class="row">
+            <!-- Kategori Alanı -->
+            <div class="col-md-2">
+                <div class="category-list p-3 shadow-sm rounded-3">
+                    <h5 class="text-center">Kategoriler</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item"><a href="#" class="text-dark text-decoration-none">Alüminyum</a></li>
+                        <li class="list-group-item"><a href="#" class="text-dark text-decoration-none">Plastik</a></li>
+                    </ul>
                 </div>
             </div>
-        }
+
+            <!-- Ürünler Alanı -->
+            <div class="col-md-10">
+                <div class="row g-4">
+                    @foreach (var product in Model)
+                    {
+                        var discountRate = product.HighPrice > 0 ? (100 - (product.LowPrice * 100 / product.HighPrice)) : 0;
+                        var discountRateInt = (int)discountRate;
+
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                            <div class="card border-0 shadow-lg p-3 position-relative rounded-4 product-card">
+                                @if (discountRate > 0)
+                                {
+                                    <div class="position-absolute top-0 start-0 discount-badge">
+                                        %@(discountRateInt) İndirim
+                                    </div>
+                                }
+
+                                <div class="product-image-container">
+                                    <img src="@Url.Content(product.ImageUrl)" class="card-img-top rounded-3">
+                                </div>
+
+                                <div class="card-body text-center">
+                                    <h6 class="text-uppercase text-muted mb-1">@product.ProductName</h6>
+                                    <p class="fw-bold text-dark mb-2">
+                                        @(product.ProductDescription.Length > 100
+                                            ? product.ProductDescription.Substring(0, 100) + "..."
+                                            : product.ProductDescription)
+                                    </p>
+
+                                    <p class="price-container">
+                                        @if (product.HighPrice > product.LowPrice)
+                                        {
+                                            <span class="old-price">@product.HighPrice TL</span>
+                                        }
+                                        <span class="new-price">@product.LowPrice TL</span>
+                                    </p>
+
+
+
+                                    <form method="post" asp-controller="User" asp-action="UserAddShoppingBag">
+                                        <input type="hidden" name="productId" value="@product.DiscountProductId" />
+                                        <button type="submit" class="btn add-to-cart w-100 fw-bold py-2 rounded-3 shadow-sm">
+                                            Sepete Ekle <i class="bi bi-cart-plus ms-1"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
     </div>
 }
-
 else
 {
-    <div class="text-center mt-5">
-        <i class="bi bi-box-seam text-muted" style="font-size: 3rem;"></i>
-        <p class="text-muted mt-2">Henüz ürün eklenmedi. Yeni fırsatlar için takipte kalın!</p>
+    <div class="text-center mt-5 empty-products">
+        <i class="bi bi-box-seam"></i>
+        <p>Henüz ürün eklenmedi. Yeni fırsatlar için takipte kalın!</p>
     </div>
 }
 
 @await Html.PartialAsync("_footer")
 
 <style>
+    .category-list {
+        background: #fff;
+        border-radius: 10px;
+    }
+
+        .category-list h5 {
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .category-list .list-group-item {
+            border: none;
+            padding: 10px;
+        }
+
+            .category-list .list-group-item:hover {
+                background: #f8f9fa;
+            }
+
     .product-card {
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 15px;
+        overflow: hidden;
+        background: white;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
         .product-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
-    .add-to-cart-btn {
-        background: linear-gradient(to right, #ff416c, #ff4b2b);
-        border: none;
+    .product-image-container {
+        width: 100%;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
     }
 
-        .add-to-cart-btn:hover {
-            opacity: 0.8;
+        .product-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
         }
+
+    .add-to-cart {
+        background: linear-gradient(135deg, #ff416c, #ff4b2b);
+        border: none;
+        color: white;
+        transition: all 0.3s ease;
+    }
+
+        .add-to-cart:hover {
+            background: linear-gradient(135deg, #ff4b2b, #ff416c);
+            transform: scale(1.05);
+        }
+
+    .discount-badge {
+        background: linear-gradient(135deg, #ff4b2b, #ff416c);
+        color: white;
+        padding: 5px 10px;
+        font-size: 14px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .empty-products {
+        font-size: 18px;
+        font-weight: bold;
+        color: #888;
+    }
+
+        .empty-products i {
+            font-size: 50px;
+            color: #ddd;
+        }
+
+    .price-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+        .price-container {
+        flex-direction: row;
+        justify-content: center;
+        align-items: baseline;
+        text-align: left;
+    }
+
+    .price-container .old-price {
+        font-size: 14px;
+        color: #999;
+        text-decoration: line-through;
+        margin-right: 8px;
+    }
+
+    .price-container .new-price {
+        font-size: 18px;
+        font-weight: bold;
+        color: #e63946;
+    }
 </style>

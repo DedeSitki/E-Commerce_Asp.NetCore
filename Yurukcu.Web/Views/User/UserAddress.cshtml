@@ -1,0 +1,131 @@
+﻿@model List<UserAddressViewModel>
+
+@{
+    ViewData["Title"] = "Adreslerim";
+}
+
+@await Html.PartialAsync("_navbar")
+
+<div class="container mt-4">
+    <h2 class="mb-4">Adreslerim</h2>
+
+    @if (Model.Any())
+    {
+        <div class="row">
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm p-3 mb-4 rounded">
+                        <div class="card-body">
+                            <h5 class="card-title d-flex justify-content-between">
+                                <span>@Model[i].AddressTitle</span>
+                                <span class="badge @(Model[i].IsBillingAddress ? "bg-danger" : "bg-primary")">
+                                    @(Model[i].IsBillingAddress ? "Fatura Adresi" : "Teslimat Adresi")
+                                </span>
+                            </h5>
+                            <p class="card-text text-muted">@Model[i].DeliveryAddress</p>
+                            <p class="card-text">
+                                <strong>@Model[i].City</strong> - @Model[i].ZipCode
+                            </p>
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editAddressModal-@i">
+                                    <i class="fas fa-edit"></i> Düzenle
+                                </button>
+                                <a asp-controller="User" asp-action="UserAddressDelete" asp-route-id="@Model[i].AddressId" class="btn btn-outline-danger">
+                                    <i class="fas fa-trash"></i> Sil
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Adres Düzenleme Modalı -->
+                    <div class="modal fade" id="editAddressModal-@i" tabindex="-1" aria-labelledby="editAddressModalLabel-@i" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form asp-controller="User" asp-action="UserAddress" method="POST">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Adresi Düzenle</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="hidden" asp-for="@Model[i].AddressId" />
+                                        <label>Başlık</label>
+                                        <input type="text" asp-for="@Model[i].AddressTitle" class="form-control mb-2" required />
+
+                                        <label>Adres</label>
+                                        <input type="text" asp-for="@Model[i].DeliveryAddress" class="form-control mb-2" required />
+
+                                        <label>Şehir</label>
+                                        <input type="text" asp-for="@Model[i].City" class="form-control mb-2" required />
+
+                                        <label>Posta Kodu</label>
+                                        <input type="text" asp-for="@Model[i].ZipCode" class="form-control mb-2" required />
+
+                                        <label>Adres Türü</label>
+                                        <select asp-for="@Model[i].IsBillingAddress" class="form-control">
+                                            <option value="false">Teslimat</option>
+                                            <option value="true">Fatura</option>
+                                        </select>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-success">Kaydet</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning text-center">
+            Henüz kayıtlı adresiniz yok. Lütfen yeni bir adres ekleyin.
+        </div>
+    }
+
+    <!-- Yeni Adres Ekle Butonu -->
+    <div class="mt-4">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newAddressModal">
+            <i class="fas fa-plus"></i> Yeni Adres Ekle
+        </button>
+    </div>
+</div>
+
+<!-- Yeni Adres Ekle Modalı -->
+<div class="modal fade" id="newAddressModal" tabindex="-1" aria-labelledby="newAddressModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form asp-controller="User" asp-action="UserAddress" method="POST">
+                <div class="modal-header">
+                    <h5 class="modal-title">Yeni Adres Ekle</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label>Başlık</label>
+                    <input type="text" name="addresses[0].AddressTitle" class="form-control mb-2" placeholder="Ev, İş" required />
+
+                    <label>Adres</label>
+                    <input type="text" name="addresses[0].DeliveryAddress" class="form-control mb-2" placeholder="Adres" required />
+
+                    <label>Şehir</label>
+                    <input type="text" name="addresses[0].City" class="form-control mb-2" placeholder="Şehir" required />
+
+                    <label>Posta Kodu</label>
+                    <input type="text" name="addresses[0].ZipCode" class="form-control mb-2" placeholder="Posta Kodu" required />
+
+                    <label>Adres Türü</label>
+                    <select name="addresses[0].IsBillingAddress" class="form-control">
+                        <option value="false">Teslimat</option>
+                        <option value="true">Fatura</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Ekle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

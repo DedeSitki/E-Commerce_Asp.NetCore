@@ -12,7 +12,7 @@ using Yurukcu.Web.Data;
 namespace Yurukcu.Web.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20250312193308_InitialCreate")]
+    [Migration("20250316090341_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -20,7 +20,7 @@ namespace Yurukcu.Web.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.2")
+                .HasAnnotation("ProductVersion", "9.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -32,9 +32,6 @@ namespace Yurukcu.Web.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DiscountProductId"));
-
-                    b.Property<int>("DiscountAmount")
-                        .HasColumnType("int");
 
                     b.Property<decimal>("HighPrice")
                         .HasColumnType("decimal(10,2)");
@@ -54,6 +51,48 @@ namespace Yurukcu.Web.Migrations
                     b.HasKey("DiscountProductId");
 
                     b.ToTable("DiscountProducts");
+                });
+
+            modelBuilder.Entity("Yurukcu.Web.Entity.OrderDetail", b =>
+                {
+                    b.Property<int>("OrderId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderId"));
+
+                    b.Property<string>("OrderAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OrderBillingAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("OrderStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OrderTrackingCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.PrimitiveCollection<string>("Orders")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PaymentMethod")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(10,2)");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("OrderId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("OrderDetails");
                 });
 
             modelBuilder.Entity("Yurukcu.Web.Entity.Product", b =>
@@ -116,6 +155,20 @@ namespace Yurukcu.Web.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Yurukcu.Web.Entity.OrderDetail", b =>
+                {
+                    b.HasOne("Yurukcu.Web.Entity.User", "User")
+                        .WithMany("Orders")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Yurukcu.Web.Entity.User", b =>
+                {
+                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

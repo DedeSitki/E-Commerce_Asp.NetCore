@@ -1,4 +1,6 @@
-﻿@{
+﻿@model UserLogInViewModel
+
+@{
     ViewData["Title"] = "Giriş Yap";
 }
 
@@ -8,32 +10,40 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 col-lg-4">
+                <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="card shadow-lg p-4 rounded-4">
                     <div class="card-body">
                         <h2 class="text-center text-primary mb-4 fw-bold">Giriş Yap</h2>
 
-                    <!-- Giriş Yap Formu -->
+                        <!-- Giriş Yap Formu -->
                         <form asp-controller="User" asp-action="UserLogIn" method="POST">
                             <div class="mb-3">
-                                <label for="email" class="form-label fw-semibold">E-posta</label>
-                                <input type="email" class="form-control rounded-3 shadow-sm" id="email" name="email" >
+                                <label asp-for="EMail" class="form-label fw-semibold">E-posta</label>
+                                <input asp-for="EMail" class="form-control rounded-3 shadow-sm">
                             </div>
                             <div class="mb-3">
-                                <label for="password" class="form-label fw-semibold">Şifre</label>
-                                <input type="password" class="form-control rounded-3 shadow-sm" id="password" name="password" >
+                                <label asp-for="Password" class="form-label fw-semibold">Şifre</label>
+                                <input asp-for="Password" class="form-control rounded-3 shadow-sm">
                             </div>
-                        <button type="submit" class="btn btn-success w-100 py-2 rounded-3">Giriş Yap</button>
-                    </form>
+                            <button type="submit" class="btn btn-success w-100 py-2 rounded-3">Giriş Yap</button>
+                        </form>
 
-                    <!-- Kayıt Olmaya Yönlendirme -->
+                        <!-- Kayıt Olmaya Yönlendirme -->
                         <div class="text-center mt-3">
                             <span class="text-muted">
                                 Hesabınız yok mu?
                                 <a class="fw-semibold text-primary text-decoration-none" asp-controller="User" asp-action="UserSignUp">Kayıt Ol</a>
                             </span>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@section scripts
+{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
+}

@@ -1,0 +1,69 @@
+﻿@model List<UserShoppingBagViewModel>
+
+@{
+    ViewData["Title"] = "Sepetim";
+}
+
+@await Html.PartialAsync("_navbar")
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4 fw-bold">🛒 Sepetiniz</h2>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="row">
+            <!-- Ürün Listesi -->
+            <div class="col-md-9">
+                @foreach (var item in Model)
+                {
+                    <div class="card shadow-sm border-0 p-3 mb-3 d-flex flex-row align-items-center">
+                        <div class="flex-grow-1">
+                            <h5 class="fw-bold mb-1">@item.ProductName</h5>
+                            <p class="text-muted mb-0">Fiyat: <strong class="text-success">@item.Price.ToString("C")</strong></p>
+
+                            <div class="d-flex align-items-center mt-2">
+                                <!-- Sepetteki ürün miktarını azaltma -->
+                                <form asp-controller="User" asp-action="DecreaseQuantity" method="post" class="d-inline">
+                                    <input type="hidden" name="productId" value="@item.ProductId" />
+                                    <button type="submit" class="btn btn-light btn-sm border rounded-circle me-2">➖</button>
+                                </form>
+
+                                <!-- Miktarı güncelleme -->
+                                <input type="number" class="form-control text-center w-25" value="@item.Quantity" min="1" disabled />
+
+                                <!-- Sepetteki ürün miktarını artırma -->
+                                <form asp-controller="User" asp-action="IncreaseQuantity" method="post" class="d-inline">
+                                    <input type="hidden" name="productId" value="@item.ProductId" />
+                                    <button type="submit" class="btn btn-light btn-sm border rounded-circle ms-2">➕</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="text-end">
+                            <p class="fw-bold text-primary mb-2">Toplam: ₺@(item.Price * item.Quantity)</p>
+                            <form asp-controller="User" asp-action="RemoveFromCart" method="post">
+                                <input type="hidden" name="productId" value="@item.ProductId" />
+                                <button type="submit" class="btn btn-outline-danger btn-sm">🗑 Sil</button>
+                            </form>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <!-- Sepet Toplamı ve Ödeme -->
+            <div class="col-md-3">
+                <div class="text-end p-4 bg-light shadow-sm rounded">
+                    <h4><strong>Toplam: </strong> <span class="text-success">@Model.Sum(x => x.Price * x.Quantity).ToString("C")</span></h4>
+                    <a asp-controller="Checkout" asp-action="Checkout" class="btn btn-primary btn-lg mt-3 w-100">💳 Ödeme Yap</a>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info text-center py-4">
+            <h4>Sepetiniz boş 🛍</h4>
+            <p>Hemen alışverişe başlayarak favori ürünlerinizi ekleyin!</p>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-warning">🛒 Alışverişe Başla</a>
+        </div>
+    }
+</div>

@@ -11,5 +11,8 @@
         public string PhoneNumber { get; set; }
         public DateTime Birthday { get; set; }
         public DateTime CreatedDate{ get; set; }
+        public List<OrderDetail>? Orders { get; set; } = new List<OrderDetail>();
+        public List<Address> Addresses { get; set; } = new List<Address>();
+        public List<ShoppingBag> ShoppingBags { get; set; }
     }
 }
