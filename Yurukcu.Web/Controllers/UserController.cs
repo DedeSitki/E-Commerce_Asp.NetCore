@@ -420,7 +420,7 @@ namespace Yurukcu.Web.Controllers
                 return RedirectToAction("UserLogIn", "User");
             }
 
-            var product = _context.DiscountProducts.FirstOrDefault(p => p.DiscountProductId == productId);
+            var product = _context.Products.FirstOrDefault(p => p.ProductId == productId);
             if (product == null)
             {
                 TempData["Message"] = "Ürün bulunamadı.";
@@ -437,9 +437,9 @@ namespace Yurukcu.Web.Controllers
                 _context.ShoppingBags.Add(new ShoppingBag
                 {
                     UserId = userId.Value,
-                    ProductId = product.DiscountProductId,
+                    ProductId = product.ProductId,
                     ProductName = product.ProductName,
-                    Price = product.LowPrice,
+                    Price = product.Price,
                     Quantity = 1
                 });
             }

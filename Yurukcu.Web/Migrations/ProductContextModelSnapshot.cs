@@ -87,34 +87,6 @@ namespace Yurukcu.Web.Migrations
                     b.ToTable("Addresses");
                 });
 
-            modelBuilder.Entity("Yurukcu.Web.Entity.DiscountProduct", b =>
-                {
-                    b.Property<int>("DiscountProductId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DiscountProductId"));
-
-                    b.Property<decimal>("HighPrice")
-                        .HasColumnType("decimal(10,2)");
-
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("LowPrice")
-                        .HasColumnType("decimal(10,2)");
-
-                    b.Property<string>("ProductDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProductName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("DiscountProductId");
-
-                    b.ToTable("DiscountProducts");
-                });
-
             modelBuilder.Entity("Yurukcu.Web.Entity.OrderDetail", b =>
                 {
                     b.Property<int>("OrderId")
@@ -168,6 +140,9 @@ namespace Yurukcu.Web.Migrations
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDiscounted")
+                        .HasColumnType("bit");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(10,2)");
 
@@ -176,6 +151,10 @@ namespace Yurukcu.Web.Migrations
 
                     b.Property<string>("ProductName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal?>("WithoutDiscountPrice")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("ProductId");
 

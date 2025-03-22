@@ -12,7 +12,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        var products = _context.DiscountProducts.ToList();
+        var products = _context.Products.ToList();
         return View(products); 
     }
     public IActionResult AboutUs()

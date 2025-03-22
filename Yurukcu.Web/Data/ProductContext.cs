@@ -10,7 +10,6 @@ namespace Yurukcu.Web.Data
         { }
 
         public DbSet<Product> Products { get; set; }
-        public DbSet<DiscountProduct> DiscountProducts { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Address> Addresses { get; set; }
@@ -22,14 +21,10 @@ namespace Yurukcu.Web.Data
             modelBuilder.Entity<Product>()
                 .Property(p => p.Price)
                 .HasColumnType("decimal(10,2)");
-
-            modelBuilder.Entity<DiscountProduct>()
-                .Property(p => p.HighPrice)
-                .HasColumnType("decimal(10,2)");
-
-            modelBuilder.Entity<DiscountProduct>()
-                .Property(p => p.LowPrice)
-                .HasColumnType("decimal(10,2)");
+            
+            modelBuilder.Entity<Product>()
+                .Property(p => p.WithoutDiscountPrice)
+                .HasPrecision(18, 2);
 
             modelBuilder.Entity<OrderDetail>()
                 .Property(p => p.TotalPrice)

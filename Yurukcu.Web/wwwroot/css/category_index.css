@@ -1,0 +1,20 @@
+﻿.plastik {
+    background-color: #d1e7fd;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.aluminyum {
+    background-color: #f1f1f1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+    font-size: 24px;
+    color: #333;
+}
+

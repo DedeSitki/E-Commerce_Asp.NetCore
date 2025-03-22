@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mvhngbMWVowi7p4q6a5FyXkM6JvCj+EkeiY95K7H43k=",
+  "Hash": "A5tUw30NWk8Wtt6hTzR9DjondfIYTgNqjpFiEM85Z2k=",
   "Source": "Yurukcu.Web",
   "BasePath": "_content/Yurukcu.Web",
   "Mode": "Default",
@@ -57,6 +57,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Yurukcu.Web.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\wwwroot\\css\\category_index.css",
+      "SourceId": "Yurukcu.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\wwwroot\\",
+      "BasePath": "_content/Yurukcu.Web",
+      "RelativePath": "css/category_index#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "683man95zu",
+      "Integrity": "1o9uD+C5EGlQAkLn5VcHG/w6pZMel6HtjUn4AgLH0p0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\category_index.css"
+    },
+    {
+      "Identity": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\wwwroot\\css\\home_index.css",
+      "SourceId": "Yurukcu.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\wwwroot\\",
+      "BasePath": "_content/Yurukcu.Web",
+      "RelativePath": "css/home_index#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "20r4x4o534",
+      "Integrity": "To1AUn2eyNaeDPyFXoNAHE3tLp/UPy7yzAr9HA0GKxQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\home_index.css"
     },
     {
       "Identity": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\wwwroot\\css\\site.css",
@@ -1404,6 +1446,170 @@
     }
   ],
   "Endpoints": [
+    {
+      "Route": "css/category_index.683man95zu.css",
+      "AssetFile": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\wwwroot\\css\\category_index.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "386"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1o9uD+C5EGlQAkLn5VcHG/w6pZMel6HtjUn4AgLH0p0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Mar 2025 06:21:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "683man95zu"
+        },
+        {
+          "Name": "label",
+          "Value": "css/category_index.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-1o9uD+C5EGlQAkLn5VcHG/w6pZMel6HtjUn4AgLH0p0="
+        }
+      ]
+    },
+    {
+      "Route": "css/category_index.css",
+      "AssetFile": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\wwwroot\\css\\category_index.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "386"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1o9uD+C5EGlQAkLn5VcHG/w6pZMel6HtjUn4AgLH0p0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Mar 2025 06:21:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-1o9uD+C5EGlQAkLn5VcHG/w6pZMel6HtjUn4AgLH0p0="
+        }
+      ]
+    },
+    {
+      "Route": "css/home_index.20r4x4o534.css",
+      "AssetFile": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\wwwroot\\css\\home_index.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2218"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"To1AUn2eyNaeDPyFXoNAHE3tLp/UPy7yzAr9HA0GKxQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Mar 2025 06:18:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "20r4x4o534"
+        },
+        {
+          "Name": "label",
+          "Value": "css/home_index.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-To1AUn2eyNaeDPyFXoNAHE3tLp/UPy7yzAr9HA0GKxQ="
+        }
+      ]
+    },
+    {
+      "Route": "css/home_index.css",
+      "AssetFile": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\wwwroot\\css\\home_index.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2218"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"To1AUn2eyNaeDPyFXoNAHE3tLp/UPy7yzAr9HA0GKxQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Mar 2025 06:18:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-To1AUn2eyNaeDPyFXoNAHE3tLp/UPy7yzAr9HA0GKxQ="
+        }
+      ]
+    },
     {
       "Route": "css/site.c2tiyv64ts.css",
       "AssetFile": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\wwwroot\\css\\site.css",

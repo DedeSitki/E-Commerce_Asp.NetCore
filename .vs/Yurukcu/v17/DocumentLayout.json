@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|c:\\users\\sitki\\source\\repos\\yurukcu\\yurukcu.web\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|solutionrelative:yurukcu.web\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|c:\\users\\sitki\\source\\repos\\yurukcu\\yurukcu.web\\data\\productcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|solutionrelative:yurukcu.web\\data\\productcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|c:\\users\\sitki\\source\\repos\\yurukcu\\yurukcu.web\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|solutionrelative:yurukcu.web\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|c:\\users\\sitki\\source\\repos\\yurukcu\\yurukcu.web\\views\\user\\usershoppingbag.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|solutionrelative:yurukcu.web\\views\\user\\usershoppingbag.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|c:\\users\\sitki\\source\\repos\\yurukcu\\yurukcu.web\\yurukcu.web.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|solutionrelative:yurukcu.web\\yurukcu.web.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,41 +30,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "Yurukcu.Web\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "Yurukcu.Web\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABAAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-19T15:18:40.598Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "Yurukcu.Web\\Controllers\\UserController.cs",
-              "ToolTip": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Controllers\\UserController.cs",
-              "RelativeToolTip": "Yurukcu.Web\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAAAMoBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T14:59:17.025Z",
+              "Title": "Yurukcu.Web",
+              "DocumentMoniker": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Yurukcu.Web.csproj",
+              "RelativeDocumentMoniker": "Yurukcu.Web\\Yurukcu.Web.csproj",
+              "ToolTip": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Yurukcu.Web.csproj",
+              "RelativeToolTip": "Yurukcu.Web\\Yurukcu.Web.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-20T07:34:00.698Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UserShoppingBag.cshtml",
-              "DocumentMoniker": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Views\\User\\UserShoppingBag.cshtml",
-              "RelativeDocumentMoniker": "Yurukcu.Web\\Views\\User\\UserShoppingBag.cshtml",
-              "ToolTip": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Views\\User\\UserShoppingBag.cshtml",
-              "RelativeToolTip": "Yurukcu.Web\\Views\\User\\UserShoppingBag.cshtml",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAC0AAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-19T14:58:22.285Z",
+              "DocumentIndex": 0,
+              "Title": "ProductContext.cs",
+              "DocumentMoniker": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Data\\ProductContext.cs",
+              "RelativeDocumentMoniker": "Yurukcu.Web\\Data\\ProductContext.cs",
+              "ToolTip": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Data\\ProductContext.cs",
+              "RelativeToolTip": "Yurukcu.Web\\Data\\ProductContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-20T07:28:52.018Z",
               "EditorCaption": ""
             }
           ]

@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|c:\\users\\sitki\\source\\repos\\yurukcu\\yurukcu.web\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|solutionrelative:yurukcu.web\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|c:\\users\\sitki\\source\\repos\\yurukcu\\yurukcu.web\\data\\productcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|solutionrelative:yurukcu.web\\data\\productcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|c:\\users\\sitki\\source\\repos\\yurukcu\\yurukcu.web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|solutionrelative:yurukcu.web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|c:\\users\\sitki\\source\\repos\\yurukcu\\yurukcu.web\\views\\user\\usershoppingbag.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|solutionrelative:yurukcu.web\\views\\user\\usershoppingbag.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|c:\\users\\sitki\\source\\repos\\yurukcu\\yurukcu.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|solutionrelative:yurukcu.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|c:\\users\\sitki\\source\\repos\\yurukcu\\yurukcu.web\\yurukcu.web.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{F95ECB6A-CDEF-4371-A50E-64AEC25A59DD}|Yurukcu.Web\\Yurukcu.Web.csproj|solutionrelative:yurukcu.web\\yurukcu.web.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -39,53 +31,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Yurukcu.Web\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Yurukcu.Web\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAqwB4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-19T15:14:17.09Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Program.cs",
-              "RelativeDocumentMoniker": "Yurukcu.Web\\Program.cs",
-              "ToolTip": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Program.cs",
-              "RelativeToolTip": "Yurukcu.Web\\Program.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAwwC8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T15:12:32.013Z",
+              "Title": "Yurukcu.Web",
+              "DocumentMoniker": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Yurukcu.Web.csproj",
+              "RelativeDocumentMoniker": "Yurukcu.Web\\Yurukcu.Web.csproj",
+              "ToolTip": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Yurukcu.Web.csproj*",
+              "RelativeToolTip": "Yurukcu.Web\\Yurukcu.Web.csproj*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-20T07:34:00.698Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "Yurukcu.Web\\Controllers\\UserController.cs",
-              "ToolTip": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Controllers\\UserController.cs",
-              "RelativeToolTip": "Yurukcu.Web\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA+AAAAAAAAAA==",
+              "Title": "ProductContext.cs",
+              "DocumentMoniker": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Data\\ProductContext.cs",
+              "RelativeDocumentMoniker": "Yurukcu.Web\\Data\\ProductContext.cs",
+              "ToolTip": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Data\\ProductContext.cs",
+              "RelativeToolTip": "Yurukcu.Web\\Data\\ProductContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T14:59:17.025Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UserShoppingBag.cshtml",
-              "DocumentMoniker": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Views\\User\\UserShoppingBag.cshtml",
-              "RelativeDocumentMoniker": "Yurukcu.Web\\Views\\User\\UserShoppingBag.cshtml",
-              "ToolTip": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\Views\\User\\UserShoppingBag.cshtml",
-              "RelativeToolTip": "Yurukcu.Web\\Views\\User\\UserShoppingBag.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-19T14:58:22.285Z",
+              "WhenOpened": "2025-03-20T07:28:52.018Z",
               "EditorCaption": ""
             }
           ]

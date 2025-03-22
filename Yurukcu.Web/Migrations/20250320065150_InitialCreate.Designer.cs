@@ -12,8 +12,8 @@ using Yurukcu.Web.Data;
 namespace Yurukcu.Web.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20250318112714_ShoppingBag1")]
-    partial class ShoppingBag1
+    [Migration("20250320065150_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,38 @@ namespace Yurukcu.Web.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("ShoppingBag", b =>
+                {
+                    b.Property<int>("ShoppingBagId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ShoppingBagId"));
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(10,2)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProductName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ShoppingBagId");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ShoppingBags");
+                });
 
             modelBuilder.Entity("Yurukcu.Web.Entity.Address", b =>
                 {
@@ -56,34 +88,6 @@ namespace Yurukcu.Web.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Addresses");
-                });
-
-            modelBuilder.Entity("Yurukcu.Web.Entity.DiscountProduct", b =>
-                {
-                    b.Property<int>("DiscountProductId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DiscountProductId"));
-
-                    b.Property<decimal>("HighPrice")
-                        .HasColumnType("decimal(10,2)");
-
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("LowPrice")
-                        .HasColumnType("decimal(10,2)");
-
-                    b.Property<string>("ProductDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProductName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("DiscountProductId");
-
-                    b.ToTable("DiscountProducts");
                 });
 
             modelBuilder.Entity("Yurukcu.Web.Entity.OrderDetail", b =>
@@ -139,6 +143,9 @@ namespace Yurukcu.Web.Migrations
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDiscounted")
+                        .HasColumnType("bit");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(10,2)");
 
@@ -148,44 +155,13 @@ namespace Yurukcu.Web.Migrations
                     b.Property<string>("ProductName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<decimal?>("WithoutDiscountPrice")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
                     b.HasKey("ProductId");
 
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("Yurukcu.Web.Entity.ShoppingBag", b =>
-                {
-                    b.Property<int>("ShoppingBagId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ShoppingBagId"));
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(10,2)");
-
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PropductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("UserId1")
-                        .HasColumnType("int");
-
-                    b.HasKey("ShoppingBagId");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("UserId1");
-
-                    b.ToTable("ShoppingBags");
                 });
 
             modelBuilder.Entity("Yurukcu.Web.Entity.SupportRequest", b =>
@@ -250,6 +226,25 @@ namespace Yurukcu.Web.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("ShoppingBag", b =>
+                {
+                    b.HasOne("Yurukcu.Web.Entity.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Yurukcu.Web.Entity.User", "User")
+                        .WithMany("ShoppingBags")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Yurukcu.Web.Entity.Address", b =>
                 {
                     b.HasOne("Yurukcu.Web.Entity.User", "User")
@@ -268,26 +263,13 @@ namespace Yurukcu.Web.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Yurukcu.Web.Entity.ShoppingBag", b =>
-                {
-                    b.HasOne("Yurukcu.Web.Entity.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId");
-
-                    b.HasOne("Yurukcu.Web.Entity.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId1");
-
-                    b.Navigation("Product");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Yurukcu.Web.Entity.User", b =>
                 {
                     b.Navigation("Addresses");
 
                     b.Navigation("Orders");
+
+                    b.Navigation("ShoppingBags");
                 });
 #pragma warning restore 612, 618
         }

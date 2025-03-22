@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\Yurukcu.Web.jqqsxym7ck.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\wwwroot\\css\\category_index.css",
+      "PackagePath": "staticwebassets\\css\\category_index.css"
+    },
+    {
+      "Id": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\wwwroot\\css\\home_index.css",
+      "PackagePath": "staticwebassets\\css\\home_index.css"
+    },
+    {
       "Id": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

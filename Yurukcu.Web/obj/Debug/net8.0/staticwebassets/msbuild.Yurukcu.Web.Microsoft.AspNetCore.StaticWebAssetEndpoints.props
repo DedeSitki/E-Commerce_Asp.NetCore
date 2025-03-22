@@ -1,5 +1,29 @@
 ﻿<Project>
   <ItemGroup>
+    <StaticWebAssetEndpoint Include="_content/Yurukcu.Web/css/category_index.683man95zu.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\category_index.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"683man95zu"},{"Name":"integrity","Value":"sha256-1o9uD\u002BC5EGlQAkLn5VcHG/w6pZMel6HtjUn4AgLH0p0="},{"Name":"label","Value":"_content/Yurukcu.Web/css/category_index.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"386"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00221o9uD\u002BC5EGlQAkLn5VcHG/w6pZMel6HtjUn4AgLH0p0=\u0022"},{"Name":"Last-Modified","Value":"Thu, 20 Mar 2025 06:21:44 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Yurukcu.Web/css/category_index.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\category_index.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-1o9uD\u002BC5EGlQAkLn5VcHG/w6pZMel6HtjUn4AgLH0p0="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"386"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00221o9uD\u002BC5EGlQAkLn5VcHG/w6pZMel6HtjUn4AgLH0p0=\u0022"},{"Name":"Last-Modified","Value":"Thu, 20 Mar 2025 06:21:44 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Yurukcu.Web/css/home_index.20r4x4o534.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\home_index.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"20r4x4o534"},{"Name":"integrity","Value":"sha256-To1AUn2eyNaeDPyFXoNAHE3tLp/UPy7yzAr9HA0GKxQ="},{"Name":"label","Value":"_content/Yurukcu.Web/css/home_index.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2218"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022To1AUn2eyNaeDPyFXoNAHE3tLp/UPy7yzAr9HA0GKxQ=\u0022"},{"Name":"Last-Modified","Value":"Thu, 20 Mar 2025 06:18:34 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Yurukcu.Web/css/home_index.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\home_index.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-To1AUn2eyNaeDPyFXoNAHE3tLp/UPy7yzAr9HA0GKxQ="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"2218"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022To1AUn2eyNaeDPyFXoNAHE3tLp/UPy7yzAr9HA0GKxQ=\u0022"},{"Name":"Last-Modified","Value":"Thu, 20 Mar 2025 06:18:34 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Yurukcu.Web/css/site.c2tiyv64ts.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
