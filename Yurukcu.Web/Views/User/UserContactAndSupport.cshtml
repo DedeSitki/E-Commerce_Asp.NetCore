@@ -1,8 +1,11 @@
-﻿@{
+﻿@model UserContactAndSupportViewModel
+
+@{
     ViewData["Title"] = "İletişim ve Destek";
 }
 
 @await Html.PartialAsync("_navbar")
+@await Html.PartialAsync("_messageBox")
 
 <div class="container mt-5">
     <h2 class="mb-4 text-center">İletişim ve Destek</h2>
@@ -13,16 +16,19 @@
             <h4>Bizimle İletişime Geçin</h4>
             <form asp-controller="User" asp-action="UserContactAndSupport" method="POST">
                 <div class="mb-3">
-                    <label for="name" class="form-label">Adınız</label>
-                    <input type="text" class="form-control" id="name" name="name" required>
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">E-Posta</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
+                    <label asp-for="Email" class="form-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label for="message" class="form-label">Mesajınız</label>
-                    <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                    <label asp-for="Message" class="form-label"></label>
+                    <textarea asp-for="Message" class="form-control" rows="4"></textarea>
+                    <span asp-validation-for="Message" class="text-danger"></span>
                 </div>
                 <button type="submit" class="btn btn-primary mb-3">Gönder</button>
             </form>

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "A5tUw30NWk8Wtt6hTzR9DjondfIYTgNqjpFiEM85Z2k=",
+  "Hash": "JyNJjtNPA882NHSV8XYpcPnOT/ZPjOFuv4E6l3KMBnc=",
   "Source": "Yurukcu.Web",
   "BasePath": "_content/Yurukcu.Web",
   "Mode": "Default",
@@ -143,12 +143,12 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\wwwroot\\js\\site.js",
+      "Identity": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\wwwroot\\js\\togglePasswordFunc.js",
       "SourceId": "Yurukcu.Web",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\wwwroot\\",
       "BasePath": "_content/Yurukcu.Web",
-      "RelativePath": "js/site#[.{fingerprint}]?.js",
+      "RelativePath": "js/togglePasswordFunc#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -157,11 +157,11 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "xtxxf3hu2r",
-      "Integrity": "hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo=",
+      "Fingerprint": "ir1xfg8e65",
+      "Integrity": "0smz1RjxzqftjyqxkY+J9twDYMOy+XyiTX8DpTQ1lzg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\site.js"
+      "OriginalItemSpec": "wwwroot\\js\\togglePasswordFunc.js"
     },
     {
       "Identity": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
@@ -1775,8 +1775,8 @@
       ]
     },
     {
-      "Route": "js/site.js",
-      "AssetFile": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\wwwroot\\js\\site.js",
+      "Route": "js/togglePasswordFunc.ir1xfg8e65.js",
+      "AssetFile": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\wwwroot\\js\\togglePasswordFunc.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1785,7 +1785,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "231"
+          "Value": "481"
         },
         {
           "Name": "Content-Type",
@@ -1793,48 +1793,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo=\""
+          "Value": "\"0smz1RjxzqftjyqxkY+J9twDYMOy+XyiTX8DpTQ1lzg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 11 Mar 2025 12:14:39 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo="
-        }
-      ]
-    },
-    {
-      "Route": "js/site.xtxxf3hu2r.js",
-      "AssetFile": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\wwwroot\\js\\site.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "231"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 11 Mar 2025 12:14:39 GMT"
+          "Value": "Wed, 02 Apr 2025 15:57:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1844,15 +1807,52 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "xtxxf3hu2r"
+          "Value": "ir1xfg8e65"
         },
         {
           "Name": "label",
-          "Value": "js/site.js"
+          "Value": "js/togglePasswordFunc.js"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo="
+          "Value": "sha256-0smz1RjxzqftjyqxkY+J9twDYMOy+XyiTX8DpTQ1lzg="
+        }
+      ]
+    },
+    {
+      "Route": "js/togglePasswordFunc.js",
+      "AssetFile": "C:\\Users\\sitki\\source\\repos\\Yurukcu\\Yurukcu.Web\\wwwroot\\js\\togglePasswordFunc.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "481"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"0smz1RjxzqftjyqxkY+J9twDYMOy+XyiTX8DpTQ1lzg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 02 Apr 2025 15:57:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-0smz1RjxzqftjyqxkY+J9twDYMOy+XyiTX8DpTQ1lzg="
         }
       ]
     },

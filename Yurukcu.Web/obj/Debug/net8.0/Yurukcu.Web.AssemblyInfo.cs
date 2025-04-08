@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Yurukcu.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6209a925e893d8dd57d886c778d1a2c086356197")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+084b705153d5f83cb06083ae47d760cc99c99d7b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Yurukcu.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Yurukcu.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

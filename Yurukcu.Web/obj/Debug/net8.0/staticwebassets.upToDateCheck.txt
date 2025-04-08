@@ -2,7 +2,7 @@ wwwroot\css\category_index.css
 wwwroot\css\home_index.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
-wwwroot\js\site.js
+wwwroot\js\togglePasswordFunc.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
 wwwroot\lib\bootstrap\dist\css\bootstrap.min.css

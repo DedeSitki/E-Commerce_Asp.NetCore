@@ -8,6 +8,7 @@ namespace Yurukcu.Web.Models
         public int UserId { get; set; }
 
         [Required(ErrorMessage ="Ad soyad bilgisi giriniz")]
+        [MaxLength(40)]
         public string FullName { get; set; }
 
         [Required(ErrorMessage = "Cinsiyet bilgisi giriniz")]
@@ -17,6 +18,7 @@ namespace Yurukcu.Web.Models
         public string PhoneNumber { get; set; }
 
         [BirthdateAttribute]
+        [Required(ErrorMessage ="Doğum tarihi bilgisi giriniz")]
         public DateTime Birthday { get; set; }
     }
 }

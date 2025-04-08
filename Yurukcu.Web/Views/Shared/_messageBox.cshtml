@@ -1,0 +1,30 @@
+﻿@{
+    var message = TempData["Message"];
+}
+
+@if (message != null)
+{
+    <div id="messageBox" class="alert alert-success alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3 shadow-lg" role="alert" style="z-index: 1050; max-width: 400px;">
+        <i class="bi bi-check-circle me-2"></i> @message
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <script>
+        setTimeout(function () {
+            var messageBox = document.getElementById("messageBox");
+            if (messageBox) {
+                var fadeEffect = setInterval(function () {
+                    if (!messageBox.style.opacity) {
+                        messageBox.style.opacity = 1;
+                    }
+                    if (messageBox.style.opacity > 0) {
+                        messageBox.style.opacity -= 0.1;
+                    } else {
+                        clearInterval(fadeEffect);
+                        messageBox.remove();
+                    }
+                }, 50);
+            }
+        }, 2000);
+    </script>
+}

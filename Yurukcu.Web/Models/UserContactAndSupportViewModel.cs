@@ -1,17 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Yurukcu.Web.Models
+public class UserContactAndSupportViewModel
 {
-    public class UserContactAndSupportViewModel
-    {
-        [Required(ErrorMessage ="Adınız gereklidir.")]
-        public string Name { get; set; }
+    [Required(ErrorMessage = "Ad zorunludur.")]
+    public string Name { get; set; }
 
-        [Required(ErrorMessage ="E-Posta adresiniz gereklidir")]
-        [EmailAddress(ErrorMessage ="Geçerli bir E-Posta adresi giriniz.")]
-        public string EMail { get; set; }
+    [Required(ErrorMessage = "E-posta zorunludur.")]
+    [EmailAddress(ErrorMessage = "Geçerli bir e-posta giriniz.")]
+    public string Email { get; set; }
 
-        [Required(ErrorMessage = "Mesajınız gereklidir")]
-        public string Message { get; set; }
-    }
+    [Required(ErrorMessage = "Mesaj boş bırakılamaz.")]
+    public string Message { get; set; }
 }

@@ -16,21 +16,35 @@
 
                         <!-- Kayıt Ol Formu -->
                         <form asp-controller="User" asp-action="UserSignUp" method="POST">
+
                             <div class="mb-3">
                                 <label asp-for="EMail" class="form-label fw-semibold">E-posta</label>
                                 <input asp-for="EMail" class="form-control rounded-3 shadow-sm">
                                 <span asp-validation-for="EMail" class="text-danger"></span>
                             </div>
-                            <div class="mb-3">
+
+                            <div class="mb-3 position-relative">
                                 <label asp-for="Password" class="form-label fw-semibold">Şifre</label>
-                                <input asp-for="Password" class="form-control rounded-3 shadow-sm">
+                                <div class="position-relative">
+                                    <input asp-for="Password" id="password" type="password" class="form-control rounded-3 shadow-sm pe-5">
+                                    <!-- Şifreyi göster/gizle ikonu -->
+                                    <i id="eyeIcon" class="bi bi-eye position-absolute end-0 top-50 translate-middle-y me-3"
+                                       onclick="togglePassword('password', 'eyeIcon')" style="cursor: pointer;"></i>
+                                </div>
                                 <span asp-validation-for="Password" class="text-danger"></span>
                             </div>
+
                             <div class="mb-3">
                                 <label asp-for="RePassword" class="form-label fw-semibold">Şifreyi Onayla</label>
-                                <input asp-for="RePassword" class="form-control rounded-3 shadow-sm">
+                                <div class="position-relative">
+                                    <input asp-for="RePassword" id="re_password" type="password" class="form-control rounded-3 shadow-sm pe-5">
+                                    <!-- Onay şifreyi göster/gizle ikonu -->
+                                    <i id="re_eyeIcon" class="bi bi-eye position-absolute end-0 top-50 translate-middle-y me-3"
+                                       onclick="togglePassword('re_password', 're_eyeIcon')" style="cursor: pointer;"></i>
+                                </div>
                                 <span asp-validation-for="RePassword" class="text-danger"></span>
                             </div>
+
                             <button type="submit" class="btn btn-success w-100 py-2 rounded-3">Kayıt Ol</button>
                         </form>
 
@@ -52,4 +66,5 @@
 {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
+    <script src="~/js/togglePasswordFunc.js"></script>
 }

@@ -5,36 +5,47 @@
 }
 
 @await Html.PartialAsync("_navbar")
+@await Html.PartialAsync("_messageBox")
 
-<div class="container mt-5 col-md-6">
-    <h2 class="mb-4 text-center">Profil Bilgilerini Düzenle</h2>
-    <form asp-action="UserMyProfile" method="post">
-        <input type="hidden" asp-for="UserId" />
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card shadow-lg p-4 col-md-6 rounded-4">
+        <h2 class="mb-4 text-center text-primary"><i class="bi bi-person-circle"></i> Profil Bilgilerini Düzenle</h2>
 
-        <div class="mb-3">
-            <label asp-for="FullName" class="form-label">Ad Soyad</label>
-            <input asp-for="FullName" class="form-control rounded-3 shadow-sm">
-            <span asp-validation-for="FullName" class="text-danger"></span>
+        <form asp-controller="User" asp-action="UserMyProfile" method="post">
+            <input type="hidden" asp-for="UserId" />
 
-        </div>
+            <div class="mb-3">
+                <label asp-for="FullName" class="form-label fw-bold"><i class="bi bi-person-fill"></i> Ad Soyad</label>
+                <input asp-for="FullName" class="form-control rounded-3 shadow-sm">
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
 
-        <div class="mb-3">
-            <label asp-for="Gender" class="form-label">Cinsiyet</label>
-            <input asp-for="Gender" class="form-control rounded-3 shadow-sm">
-            <span asp-validation-for="Gender" class="text-danger"></span>
-        </div>
+            <div class="mb-3">
+                <label asp-for="Gender" class="form-label fw-bold"><i class="bi bi-gender-ambiguous"></i> Cinsiyet</label>
+                <select asp-for="Gender" class="form-select rounded-3 shadow-sm">
+                    <option value="Erkek">Erkek</option>
+                    <option value="Kadın">Kadın</option>
+                </select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
 
-        <div class="mb-3">
-            <label asp-for="PhoneNumber" class="form-label">Telefon Numarası</label>
-            <input asp-for="PhoneNumber" class="form-control rounded-3 shadow-sm">
-            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-        </div>
+            <div class="mb-3">
+                <label asp-for="PhoneNumber" class="form-label fw-bold"><i class="bi bi-telephone-fill"></i> Telefon Numarası</label>
+                <input asp-for="PhoneNumber" type="tel" class="form-control rounded-3 shadow-sm" placeholder="+90 555 555 55 55">
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
 
-        <div class="mb-3">
-            <label asp-for="Birthday" class="form-label">Doğum Tarihi</label>
-            <input asp-for="Birthday" type="date" class="form-control rounded-3 shadow-sm" >
-            <span asp-validation-for="Birthday" class="text-danger"></span>
-        </div>
-        <button type="submit" class="btn btn-success">Güncelle</button>
-    </form>
+            <div class="mb-3">
+                <label asp-for="Birthday" class="form-label fw-bold"><i class="bi bi-calendar-event-fill"></i> Doğum Tarihi</label>
+                <input asp-for="Birthday" type="date" class="form-control rounded-3 shadow-sm">
+                <span asp-validation-for="Birthday" class="text-danger"></span>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-success btn-lg px-4 rounded-pill">Güncelle</button>
+            </div>
+
+        </form>
+    </div>
 </div>
+

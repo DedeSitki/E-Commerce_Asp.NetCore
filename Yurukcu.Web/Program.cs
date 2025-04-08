@@ -21,10 +21,12 @@ builder.Services.AddSession(options =>
 
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromMinutes(30); 
-    options.Cookie.HttpOnly = true;
-    options.Cookie.IsEssential = true;
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // 30 dakika sonra oturumu kapat
+    options.Cookie.HttpOnly = true; // JavaScript'in eriþimini engelle
+    options.Cookie.IsEssential = true; // Kullanýcý izin verse de vermese de çerezlerin kullanýlmasýný saðlar
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always; // Sadece HTTPS üzerinden gönder
 });
+
 
 var app = builder.Build();
 

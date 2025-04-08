@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using Yurukcu.Web.Data;
 using Yurukcu.Web.Entity;
@@ -14,11 +15,13 @@ namespace Yurukcu.Web.Controllers
     {
         private readonly ProductContext _context;
         private readonly PasswordHasher<User> _passwordHasher;
+        private readonly IConfiguration _configuration;
 
-        public UserController( ProductContext context)
+        public UserController(IConfiguration configuration, ProductContext context)
         {
             _context = context;
             _passwordHasher = new PasswordHasher<User>();
+            _configuration = configuration;
         }
 
         [HttpGet]
@@ -30,21 +33,23 @@ namespace Yurukcu.Web.Controllers
         [HttpPost]
         public IActionResult UserLogIn(UserLogInViewModel model)
         {
-            var user = _context.Users.FirstOrDefault(u => u.EMail == model.EMail);
+            var user = _context.Users.AsNoTracking().FirstOrDefault(u => u.EMail == model.EMail);
+            bool isPasswordCorrect = false;
 
             if (user != null)
             {
-                bool isPasswordCorrect = BCrypt.Net.BCrypt.Verify(model.Password, user.Password);
-
-                if (isPasswordCorrect)
-                {
-                    HttpContext.Session.SetString("UserEMail", user.EMail);
-                    HttpContext.Session.SetInt32("UserId", user.UserId);
-                    return RedirectToAction("Index", "Home");
-                }               
+                isPasswordCorrect = BCrypt.Net.BCrypt.Verify(model.Password, user.Password);
             }
 
-            ModelState.AddModelError("", "Bilgilerinizi kontol ediniz");
+            if (isPasswordCorrect)
+            {
+                HttpContext.Session.Clear(); // Eski session verilerini temizle
+                HttpContext.Session.SetString("UserEMail", user.EMail);
+                HttpContext.Session.SetInt32("UserId", user.UserId);
+                return RedirectToAction("Index", "Home");
+            }
+
+            ModelState.AddModelError("", "Geçersiz e-posta veya şifre");
 
             return View();
         }
@@ -84,15 +89,23 @@ namespace Yurukcu.Web.Controllers
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
 
-            if (userId == null)
+            if (!userId.HasValue)
             {
                 return RedirectToAction("UserLogIn", "User");
             }
 
-            var user = _context.Users.FirstOrDefault(u => u.UserId == userId);
+            var user = _context.Users
+                               .Where(u => u.UserId == userId.Value)
+                               .Select(u => new UserAccountViewModel
+                               {
+                                   EMail = u.EMail,
+                                   CreatedDate = u.CreatedDate
+                               })
+                               .SingleOrDefault();
+
             if (user == null)
             {
-                HttpContext.Session.Clear(); 
+                HttpContext.Session.Clear();
                 return RedirectToAction("UserLogIn", "User");
             }
 
@@ -116,54 +129,18 @@ namespace Yurukcu.Web.Controllers
                 return RedirectToAction("UserLogIn", "User");
             }
 
-            var user = _context.Users.FirstOrDefault(u => u.UserId == userId);
-            if (user == null)
-            {
-                HttpContext.Session.Clear(); 
-                return RedirectToAction("UserLogIn", "User");
-            }
+            var user = _context.Users
+                .Where(u => u.UserId == userId.Value)
+                .Select(u => new UserMyProfileViewModel
+                {
+                    UserId = u.UserId,
+                    Birthday = u.Birthday,
+                    FullName = u.FullName,
+                    Gender = u.Gender,
+                    PhoneNumber = u.PhoneNumber
+                })
+                .SingleOrDefault();
 
-            var model = new UserMyProfileViewModel
-            {
-                UserId = user.UserId,
-                FullName = user.FullName,
-                Gender = user.Gender,
-                PhoneNumber = user.PhoneNumber,
-                Birthday = user.Birthday
-            };
-
-            return View(model);
-        }
-
-        [HttpPost]
-        public IActionResult UserMyProfile(UserMyProfileViewModel model)
-        {
-            var existingUser = _context.Users.FirstOrDefault(u => u.UserId == model.UserId);
-
-            if (existingUser != null)
-            {
-                existingUser.FullName = model.FullName;
-                existingUser.Gender = model.Gender;
-                existingUser.PhoneNumber = model.PhoneNumber;
-                existingUser.Birthday = model.Birthday;
-
-                _context.SaveChanges();
-            }
-
-            return RedirectToAction("UserAccountInfo", new { userId = model.UserId });
-        }
-
-        [HttpGet]
-        public IActionResult UserMyOrders()
-        {
-            int? userId = HttpContext.Session.GetInt32("UserId");
-
-            if (userId == null)
-            {
-                return RedirectToAction("UserLogIn", "User");
-            }
-
-            var user = _context.Users.FirstOrDefault(u => u.UserId == userId);
 
             if (user == null)
             {
@@ -171,45 +148,93 @@ namespace Yurukcu.Web.Controllers
                 return RedirectToAction("UserLogIn", "User");
             }
 
-            var orders = _context.OrderDetails
-                .Where(o => o.User.UserId == userId)
+            return View(user);
+        }
+
+        [HttpPost]
+        public IActionResult UserMyProfile(UserMyProfileViewModel model)
+        {
+            var existingUser = _context.Users.SingleOrDefault(u => u.UserId == model.UserId);
+
+            if (ModelState.IsValid)
+            {
+                if (existingUser != null)
+                {
+                    existingUser.FullName = model.FullName;
+                    existingUser.Gender = model.Gender;
+                    existingUser.PhoneNumber = model.PhoneNumber;
+                    existingUser.Birthday = model.Birthday;
+
+                    _context.SaveChanges();
+                }
+                TempData["Message"] = "Bilgiler Güncellendi";
+                return RedirectToAction("UserMyProfile", new { userId = model.UserId });
+            }
+            return View(model);
+
+        }
+
+        [HttpGet]
+        public IActionResult UserMyOrders()
+        {
+            int? userId = HttpContext.Session.GetInt32("UserId");
+
+            if (!userId.HasValue)
+            {
+                return RedirectToAction("UserLogIn", "User");
+            }
+
+            bool userExists = _context.Users.Any(u => u.UserId == userId.Value);
+
+            if (!userExists)
+            {
+                HttpContext.Session.Clear();
+                return RedirectToAction("UserLogIn", "User");
+            }
+
+            var orderViewModels = _context.OrderDetails
+                .Where(u => u.UserId == userId.Value)
+                .Select(o => new OrderDetailViewModel
+                {
+                    OrderAddress = o.OrderAddress,
+                    OrderId = o.OrderId,
+                    OrderBillingAddress = o.OrderBillingAddress,
+                    OrderDate = o.OrderDate,
+                    OrderStatus = o.OrderStatus,
+                    OrderTrackingCode = o.OrderTrackingCode,
+                    PaymentMethod = o.PaymentMethod,
+                    TotalPrice = o.TotalPrice
+                })
+                .AsNoTracking()
                 .ToList();
 
-            var orderViewModels = orders.Select(order => new OrderDetailViewModel
-            {
-                OrderId = order.OrderId,
-                OrderDate = order.OrderDate,
-                OrderAddress = order.OrderAddress,
-                TotalPrice = order.TotalPrice,
-                PaymentMethod = order.PaymentMethod,
-                OrderStatus = order.OrderStatus,
-                OrderTrackingCode = order.OrderTrackingCode
-            }).ToList();
-
-            return View(orderViewModels); 
+            return View(orderViewModels);
         }
 
         [HttpGet]
         public IActionResult UserMyOrdersDetail(int id)
         {
-            var orderDetail = _context.OrderDetails
-                                      .FirstOrDefault(o => o.OrderId == id);
+            int? userId = HttpContext.Session.GetInt32("UserId");
 
-            if (orderDetail == null)
+            if (!userId.HasValue)
             {
-                return NotFound();
+                return RedirectToAction("UserLogIn", "User");
             }
 
-            var orderDetailViewModel = new OrderDetailViewModel
-            {
-                OrderId = orderDetail.OrderId,
-                OrderDate = orderDetail.OrderDate,
-                OrderAddress = orderDetail.OrderAddress,
-                TotalPrice = orderDetail.TotalPrice,
-                PaymentMethod = orderDetail.PaymentMethod,
-                OrderStatus = orderDetail.OrderStatus,
-                OrderTrackingCode = orderDetail.OrderTrackingCode
-            };
+            var orderDetailViewModel = _context.OrderDetails
+                .Where(u => u.UserId == userId.Value)
+                .Select(order => new OrderDetailViewModel
+                {
+                    OrderId = order.OrderId,
+                    OrderDate = order.OrderDate,
+                    OrderAddress = order.OrderAddress,
+                    TotalPrice = order.TotalPrice,
+                    PaymentMethod = order.PaymentMethod,
+                    OrderStatus = order.OrderStatus,
+                    OrderTrackingCode = order.OrderTrackingCode
+                })
+                .AsNoTracking()
+                .SingleOrDefault();
 
             return View(orderDetailViewModel);
         }
@@ -218,7 +243,8 @@ namespace Yurukcu.Web.Controllers
         public IActionResult UserAddress()
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
-            if(userId == null)
+
+            if (!userId.HasValue)
             {
                 return RedirectToAction("UserLogIn", "User");
             }
@@ -233,7 +259,9 @@ namespace Yurukcu.Web.Controllers
                     DeliveryAddress = a.DeliveryAddress,
                     ZipCode = a.ZipCode,
                     IsBillingAddress = a.IsBillingAddress
-                }).ToList();
+                })
+                .AsNoTracking()
+                .ToList();
             return View(address);
         }
 
@@ -241,52 +269,145 @@ namespace Yurukcu.Web.Controllers
         public IActionResult UserAddress(List<UserAddressViewModel> addresses)
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
-            if (userId == null)
+
+            if (!userId.HasValue)
+            {
                 return RedirectToAction("UserLogIn", "User");
+            }
+
+            var userAddressIds = _context.Addresses
+                .Where(u => u.UserId == userId.Value)
+                .Select(a => a.AddressId)
+                .ToHashSet();
+
+            var newAddresses = new List<Address>();
+            var updateAddresses = new List<Address>();
 
             foreach (var viewModel in addresses)
             {
-                var address = new Address
+                if (viewModel.AddressId == 0)
                 {
-                    AddressId = viewModel.AddressId,
-                    UserId = userId.Value,
-                    AddressTitle = viewModel.AddressTitle,
-                    DeliveryAddress = viewModel.DeliveryAddress,
-                    City = viewModel.City,
-                    ZipCode = viewModel.ZipCode,
-                    IsBillingAddress = viewModel.IsBillingAddress
-                };
-
-                if (address.AddressId == 0)
-                    _context.Addresses.Add(address);
-                else
-                    _context.Addresses.Update(address);
+                    newAddresses.Add(new Address
+                    {
+                        UserId = userId.Value,
+                        AddressTitle = viewModel.AddressTitle,
+                        DeliveryAddress = viewModel.DeliveryAddress,
+                        City = viewModel.City,
+                        IsBillingAddress = viewModel.IsBillingAddress,
+                        ZipCode = viewModel.ZipCode
+                    });
+                }
+                else if (userAddressIds.Contains(viewModel.AddressId))
+                {
+                    updateAddresses.Add(new Address
+                    {
+                        AddressId = viewModel.AddressId,
+                        UserId = userId.Value,
+                        AddressTitle = viewModel.AddressTitle,
+                        DeliveryAddress = viewModel.DeliveryAddress,
+                        City = viewModel.City,
+                        IsBillingAddress = viewModel.IsBillingAddress,
+                        ZipCode = viewModel.ZipCode
+                    });
+                }
             }
 
+            if (newAddresses.Any())
+                _context.Addresses.AddRange(newAddresses);
+
+            if (updateAddresses.Any())
+                _context.Addresses.UpdateRange(updateAddresses);
+
             _context.SaveChanges();
-            return RedirectToAction("UserAddress","User");
+            return RedirectToAction("UserAddress", "User");
         }
 
         [HttpGet]
         public IActionResult UserAddressDelete(int id)
         {
-            var address = _context.Addresses.FirstOrDefault(a => a.AddressId == id);
-            if(address != null)
+
+            int? userId = HttpContext.Session.GetInt32("UserId");
+
+            if (!userId.HasValue)
             {
-                _context.Addresses.Remove(address);
-                _context.SaveChanges();
+                RedirectToAction("UserLogIn", "User");
             }
+
+
+            var address = _context.Addresses.FirstOrDefault(a => a.AddressId == id && a.UserId == userId.Value);
+
+            if (address == null)
+            {
+                return NotFound(); // Yetkisiz işlem engelleniyor!
+            }
+
+            _context.Addresses.Remove(address);
+            _context.SaveChanges();
+
             return RedirectToAction("UserAddress", "User");
         }
 
         [HttpGet]
         public IActionResult UserContactAndSupport()
         {
-            return View(); 
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UserContactAndSupport(SupportRequest model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            model.SubmittedDate = DateTime.Now; 
+
+            var smtpHost = _configuration["SmtpSettings:Host"];
+            var smtpPort = int.Parse(_configuration["SmtpSettings:Port"]);
+            var smtpEmail = _configuration["SmtpSettings:Email"];
+            var smtpPassword = _configuration["SmtpSettings:Password"];
+            var enableSsl = bool.Parse(_configuration["SmtpSettings:EnableSsl"]);
+
+            var toEmail = "yurukcualuminyum@gmail.com";
+            var subject = "Yeni İletişim Formu Mesajı";
+            var body = $@"
+                <h3>Yeni mesaj alındı</h3>
+                <p><strong>Ad:</strong> {model.Name}</p>
+                <p><strong>E-Posta:</strong> {model.EMail}</p>
+                <p><strong>Mesaj:</strong><br>{model.Message}</p>
+                <p><strong>Gönderim Zamanı:</strong> {model.SubmittedDate}</p>";
+
+            var message = new MailMessage
+            {
+                From = new MailAddress(model.EMail),
+                Subject = subject,
+                Body = body,
+                IsBodyHtml = true
+            };
+            message.To.Add(toEmail);
+
+            using var smtpClient = new SmtpClient(smtpHost, smtpPort)
+            {
+                Credentials = new NetworkCredential(smtpEmail, smtpPassword),
+                EnableSsl = enableSsl
+            };
+
+            try
+            {
+                await smtpClient.SendMailAsync(message);
+                TempData["Message"] = "Mesajınız başarıyla gönderildi!";
+            }
+            catch (Exception ex)
+            {
+                TempData["Message"] = "Mesaj gönderilemedi";
+            }
+
+            return RedirectToAction("UserContactAndSupport", "User");
         }
 
         [HttpGet]
-        public IActionResult UserShoppingBag()
+        public async Task<IActionResult> UserShoppingBagAsync()
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
 
@@ -302,10 +423,10 @@ namespace Yurukcu.Web.Controllers
                 return RedirectToAction("UserLogIn", "User");
             }
 
-            var cartItems = _context.ShoppingBags
+            var cartItems = await _context.ShoppingBags
                                     .Where(c => c.UserId == userId)
                                     .Include(c => c.Product)
-                                    .ToList();
+                                    .ToListAsync();
 
             var cartItemCount = cartItems.Sum(c => c.Quantity);
             HttpContext.Session.SetInt32("CartItemCount", cartItemCount);
@@ -322,7 +443,7 @@ namespace Yurukcu.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult DecreaseQuantity(int productId)
+        public async Task<IActionResult> DecreaseQuantity(int productId)
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
 
@@ -331,7 +452,8 @@ namespace Yurukcu.Web.Controllers
                 return RedirectToAction("UserLogIn", "User");
             }
 
-            var cartItem = _context.ShoppingBags.FirstOrDefault(c => c.ProductId == productId && c.UserId == userId);
+            var cartItem = await _context.ShoppingBags
+                                          .FirstOrDefaultAsync(c => c.ProductId == productId && c.UserId == userId);
 
             if (cartItem != null)
             {
@@ -344,67 +466,62 @@ namespace Yurukcu.Web.Controllers
                     _context.ShoppingBags.Remove(cartItem);
                 }
 
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
 
-                var cartItemCount = _context.ShoppingBags
-                                            .Where(c => c.UserId == userId)
-                                            .Sum(c => c.Quantity);
-                HttpContext.Session.SetInt32("CartItemCount", cartItemCount);
+                await UpdateCartItemCount(userId.Value);
             }
 
             return RedirectToAction("UserShoppingBag");
         }
 
         [HttpPost]
-        public IActionResult IncreaseQuantity(int productId)
+        public async Task<IActionResult> IncreaseQuantity(int productId)
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
-            if(userId == null)
+            if (userId == null)
             {
-                TempData["Message"]= "Giriş yapmanız gerekiyor.";
-                return  RedirectToAction("UserLogIn","User");
+                TempData["Message"] = "Giriş yapmanız gerekiyor.";
+                return RedirectToAction("UserLogIn", "User");
             }
-            var cartItem = _context.ShoppingBags.FirstOrDefault(c => c.ProductId == productId && c.UserId == userId);
-            if(cartItem != null)
+
+            var cartItem = await _context.ShoppingBags
+                                          .FirstOrDefaultAsync(c => c.ProductId == productId && c.UserId == userId);
+
+            if (cartItem != null)
             {
                 cartItem.Quantity++;
-
-                _context.SaveChanges();
-
-                var cartItemCount = _context.ShoppingBags
-                    .Where(c => c.UserId == userId)
-                    .Sum(c => c.Quantity);
-                HttpContext.Session.SetInt32("CartItemCount", cartItemCount);
-
+                await _context.SaveChangesAsync();
+                await UpdateCartItemCount(userId.Value);
             }
 
-            return RedirectToAction("UserShoppingBag", "User");
+            return RedirectToAction("UserShoppingBag");
         }
 
         [HttpPost]
-        public IActionResult RemoveFromCart(int productId)
+        public async Task<IActionResult> RemoveFromCart(int productId)
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
-            if(userId == null)
+            if (userId == null)
             {
                 return RedirectToAction("UserLogIn", "User");
             }
-            var cartItem = _context.ShoppingBags.FirstOrDefault(c => c.ProductId == productId && c.UserId == userId);
-            if(cartItem != null)
+
+            var cartItem = await _context.ShoppingBags
+                                          .FirstOrDefaultAsync(c => c.ProductId == productId && c.UserId == userId);
+
+            if (cartItem != null)
             {
                 _context.ShoppingBags.Remove(cartItem);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
 
-                var cartItemCount = _context.ShoppingBags
-                    .Where(c => c.UserId == userId)
-                    .Sum(c => c.Quantity);
-                HttpContext.Session.SetInt32("CartItemCount", cartItemCount);
+                await UpdateCartItemCount(userId.Value);
             }
+
             return RedirectToAction("UserShoppingBag", "User");
         }
 
         [HttpPost]
-        public IActionResult UserAddShoppingBag(int productId)
+        public async Task<IActionResult> UserAddShoppingBag(int productId)
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
 
@@ -413,21 +530,21 @@ namespace Yurukcu.Web.Controllers
                 return RedirectToAction("UserLogIn", "User");
             }
 
-            var user = _context.Users.FirstOrDefault(u => u.UserId == userId);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserId == userId);
             if (user == null)
             {
                 HttpContext.Session.Clear();
                 return RedirectToAction("UserLogIn", "User");
             }
 
-            var product = _context.Products.FirstOrDefault(p => p.ProductId == productId);
+            var product = await _context.Products.FirstOrDefaultAsync(p => p.ProductId == productId);
             if (product == null)
             {
                 TempData["Message"] = "Ürün bulunamadı.";
                 return RedirectToAction("UserShoppingBag");
             }
 
-            var cartItem = _context.ShoppingBags.FirstOrDefault(c => c.ProductId == productId && c.UserId == userId);
+            var cartItem = await _context.ShoppingBags.FirstOrDefaultAsync(c => c.ProductId == productId && c.UserId == userId);
             if (cartItem != null)
             {
                 cartItem.Quantity++;
@@ -444,19 +561,24 @@ namespace Yurukcu.Web.Controllers
                 });
             }
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
-            var cartItemCount = _context.ShoppingBags
+            var cartItemCount = await _context.ShoppingBags
                                         .Where(c => c.UserId == userId)
-                                        .Sum(c => c.Quantity);
+                                        .SumAsync(c => c.Quantity);
             HttpContext.Session.SetInt32("CartItemCount", cartItemCount);
             TempData["Message"] = "Ürün Sepete Eklendi";
 
             return RedirectToAction("Index", "Home");
         }
 
+        private async Task UpdateCartItemCount(int userId)
+        {
+            var cartItemCount = await _context.ShoppingBags
+                                               .Where(c => c.UserId == userId)
+                                               .SumAsync(c => c.Quantity);
 
-
+            HttpContext.Session.SetInt32("CartItemCount", cartItemCount);
+        }
     }
-
 }
